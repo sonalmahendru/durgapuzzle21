@@ -1,7 +1,7 @@
 /* globals Deferred, js */
 
 var loaders = [];
-var imgpath = '/';
+var imgpath = 'img/';
 var imageloadprogress = 0;
 var imageloadtotal = 0;
 
