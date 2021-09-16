@@ -176,11 +176,11 @@ window.addEventListener('mouseup', function(){
     }else{
       if(objectRow == 0){
         objects[targetObjectIndex].style.left = 0;
-        objects[targetObjectIndex].style.top = initY;
+        objects[targetObjectIndex].style.top = initOffsetY;
         console.log("\nobject.top= "+initY);
       } else {
         objects2[targetObjectIndex-4].style.left = 0;
-        objects2[targetObjectIndex-4].style.top = initY;
+        objects2[targetObjectIndex-4].style.top = initOffsetY;
       }
     }
     targetObjectIndex = null;
