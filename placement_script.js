@@ -136,8 +136,10 @@ window.addEventListener('touchmove', function(event){
 });
 window.addEventListener('mousemove', function(event){
   if(targetObjectIndex != null){
-    newX = event.pageX - holdX;
-    newY = event.pageY - holdY;
+    newX = event.pageX;
+    newY = event.pageY;
+    //newX = event.pageX - holdX;
+    //newY = event.pageY - holdY;
     moveObject(targetObjectIndex, objectRow);
   }
 });
