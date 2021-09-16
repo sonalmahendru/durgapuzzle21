@@ -173,6 +173,7 @@ window.addEventListener('mouseup', function(){
       if(objectRow == 0){
         objects[targetObjectIndex].style.left = 0;
         objects[targetObjectIndex].style.top = initY;
+        console.log("\nobject.top= "+initY);
       } else {
         objects2[targetObjectIndex-4].style.left = 0;
         objects2[targetObjectIndex-4].style.top = initY;
