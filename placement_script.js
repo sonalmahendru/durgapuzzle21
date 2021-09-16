@@ -234,5 +234,6 @@ function isOverlapped(targetObjectIndex, targetSlotIndex, objectRow){
     objectRect = objects2[targetObjectIndex-4].getBoundingClientRect();
   }  
   var slotRect = slots[targetSlotIndex].getBoundingClientRect();
+  console.log("objectRect position: "+objectRect.left+", "+objectRect.right+", "+objectRect.top+", "+objectRect.bottom+" and slot position: "+slotRect.left+", "+slotRect.right+", "+slotRect.top+", "+slotRect.bottom);
   return !(objectRect.right < slotRect.left || objectRect.left > slotRect.right || objectRect.bottom < slotRect.top || objectRect.top > slotRect.bottom);
 }
