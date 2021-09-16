@@ -174,7 +174,7 @@ window.addEventListener('mouseup', function(){
         objects[targetObjectIndex].style.left = 0;
         objects[targetObjectIndex].style.top = initY;
       } else {
-        objects2[targetObjectIndex-4].style.right = 0;
+        objects2[targetObjectIndex-4].style.left = 0;
         objects2[targetObjectIndex-4].style.top = initY;
       }
     }
