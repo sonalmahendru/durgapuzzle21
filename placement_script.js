@@ -100,18 +100,22 @@ window.addEventListener('mousedown', function(event){
     targetObjectIndex = event.target.getAttribute('objectIndex');
     var objectRect;
     if(event.target.hasAttribute('right')){
-      console.log('inside right attribute');
-      objectRect  = objects2[targetObjectIndex-4].getBoundingClientRect();
-      objectRow = 1;
-    } else {
-      objectRect = objects[targetObjectIndex].getBoundingClientRect();
-      objectRow  = 0;
-    } 
-    initX = objectRect.left+'px';
-    initY = objectRect.top+'px';
-    initOffsetX = objectRect.left - offsetX+'px';
-    initOffsetY = objectRect.top - offsetY+'px';
-    holdX = event.clientX - event.target.getBoundingClientRect().left;
+        console.log('inside right attribute');
+        objectRect  = objects2[targetObjectIndex-4].getBoundingClientRect();
+        objectRow = 1;
+        initX = objectRect.left+'px';
+        initY = objectRect.top+'px';
+        initOffsetX = objectRect.left - rightOffsetX+'px';
+        initOffsetY = objectRect.top - rightOffsetY+'px';
+      } else {
+        objectRect = objects[targetObjectIndex].getBoundingClientRect();
+        objectRow = 0;
+        initX = objectRect.left+'px';
+        initY = objectRect.top+'px';
+        initOffsetX = objectRect.left - leftOffsetX+'px';
+        initOffsetY = objectRect.top - leftOffsetY+'px';
+      }
+      holdX = event.clientX - event.target.getBoundingClientRect().left;
     holdY = event.clientY - event.target.getBoundingClientRect().top;
   }
 });
