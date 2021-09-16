@@ -8,7 +8,6 @@ var imageloadtotal = 0;
 var allimages = [
 	{
 		'name': 'pictures',
-		//'images': ['city.jpg'],
 		'images':['puzzle.png'],
 		'dir': ''
 	},
@@ -22,7 +21,6 @@ function loadFile(src,array,num){
 		array[num] = sprite;
 		deferred.resolve();
 		imageloadprogress++;
-		//document.getElementById('loading').style.width = (imageloadprogress / imageloadtotal) * 100 + '%';
 	};
 	sprite.src = src;
 	return deferred.promise();
@@ -103,8 +101,6 @@ function NewPiece(x,y,w,h,solvedx,solvedy,spritex,spritey,rowx,rowy){
 				js.savedcanvash = js.canvash;
 				js.piececountx = 3; //changed from 6 to 3
 				js.piececounty = 3;
-				document.getElementById('piecesx').value = js.piececountx;
-				document.getElementById('piecesy').value = js.piececounty;
 				js.general.createPieces();
 			},
 
@@ -201,24 +197,6 @@ function NewPiece(x,y,w,h,solvedx,solvedy,spritex,spritey,rowx,rowy){
 					if(js.clickedpiece !== -1){
 						js.general.movePiece(e);
 					}
-				},false);
-
-				var onupdate = ((document.ontouchstart!==null)?'mousedown':'touchstart');
-				document.getElementById('updatePuzzle').addEventListener(onupdate,function(e){
-					js.general.updateSettings();
-				},false);
-
-				var showoptions = ((document.ontouchstart!==null)?'mousedown':'touchstart');
-				document.getElementById('showoptions').addEventListener(showoptions,function(e){
-					document.getElementById('options').className = 'optionswrapper shown';
-				},false);
-				var hideoptions = ((document.ontouchstart!==null)?'mousedown':'touchstart');
-				document.getElementById('hideoptions').addEventListener(hideoptions,function(e){
-					document.getElementById('options').className = 'optionswrapper';
-				},false);
-				var reset = ((document.ontouchstart!==null)?'mousedown':'touchstart');
-				document.getElementById('resetPuzzle').addEventListener(reset,function(e){
-					js.general.resetPuzzle();
 				},false);
 			},
 
@@ -336,47 +314,6 @@ function NewPiece(x,y,w,h,solvedx,solvedy,spritex,spritey,rowx,rowy){
 				else {
 					return(0);
 				}
-			},
-
-			//update the puzzle based on entered values when 'update' is clicked
-			updateSettings: function(){
-				var elAcross = document.getElementById('piecesx');
-				var elDown = document.getElementById('piecesy');
-
-				var across = Math.min(20,elAcross.value);
-				var down = Math.min(20,elDown.value);
-
-				var file = document.getElementById('fileupload').files[0];
-
-				if(typeof file !== 'undefined'){
-					var reader = new FileReader();
-					reader.onload = function(){
-						var img = new Image();
-						img.src = reader.result;
-						img.onload = function(){
-							js.puzzle = img;
-							js.piececountx = across;
-							js.piececounty = down;
-							//fixme this is a repetition of some of the lines in init - could be more efficient
-							js.idealw = js.puzzle.width;
-							js.idealh = js.puzzle.height;
-							js.general.initCanvasSize();
-							js.savedcanvasw = js.canvasw;
-							js.savedcanvash = js.canvash;
-							js.general.createPieces();
-						};
-					};
-					reader.readAsDataURL(file);
-				}
-				else {
-					js.piececountx = across;
-					js.piececounty = down;
-					js.general.createPieces();
-				}
-				elAcross.value = across;
-				elDown.value = down;
-				document.getElementById('body').className = '';
-				document.getElementById('options').className = 'optionswrapper';
 			},
 
 			hideAllPieces: function(){
